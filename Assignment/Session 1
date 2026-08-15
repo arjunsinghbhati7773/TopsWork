@@ -1,0 +1,83 @@
+Task 1
+      Name Five IT job roles and write one line about what each role does.
+Answer
+      Five IT Job Roles:
+        1 Software Developer:
+          Designs, develops, and maintains software applications and systems.
+        2 Data Scientist:
+          Analyzes complex datasets to extract insights and build predictive machine learning models.
+        3 Web Developer:
+          Analyzes complex datasets to extract insights and build predictive machine learning models.
+        4 Data Analyst:
+          Analyzes data to find useful insights and support decisions.
+        5 Network Engineer:
+          Manages and maintains computer networks and network security.
+
+
+Task 2
+      List Three product companies and Three service companies with one example of work each does.
+Answer
+      The product companies are build and sell their own software.
+        The three Product companies are:
+          1 Microsoft
+          2 Adobe
+          3 Salesforse
+      
+      Example:
+              1 Microsoft:
+                Develops and sells software products like the Windows operating system and Microsoft Office suite.
+              2 Adobe:
+                Creates and licenses creative design software, such as Photoshop and Illustrator.
+              3 Salesforse:
+                Builds and sells a cloud-based Customer Relationship Management (CRM) platform.
+
+      The Service Companies Provide IT solutions, consulting, and development for other businesses.
+         The three Service companies are:
+          1 TCS (Tata Consultancy Services)
+          2 Accenture
+          3 Infosys
+      
+    Example:
+            1 TCS (Tata Consultancy Services):
+              Provides custom software development and IT consulting for global enterprises.
+            2 Accenture:
+              Delivers technology strategy, system integration, and digital transformation services to corporate clients.
+            3 Infosys:
+              Offers IT outsourcing, cloud migration, and managed IT services for various industries.
+
+
+Task 3
+      Write the full forms and one-line use of: GitHub, Slack, Jira, IDE, API.
+Answer
+      The full forms of GitHub, Slack, Jira, IDE and API is:
+        1 GitHub: Not an acronym (based on the "Git" version control system).
+        2 Slack: Searchable Log of All Conversation and Knowledge.
+        3 Jira: Not an acronym (derived from "Gojira", the Japanese word for Godzilla).
+        4 IDE: Integrated Development Environment.
+        5 API: Application Programming Interface.
+
+      Uses of GitHub, Slack, Jira, IDE, API.
+        1 GitHub: A cloud-based platform for hosting code repositories, version control, and developer collaboration.
+        2 Slack: Searchable Log of All Conversation and Knowledge. Use: A messaging application designed specifically for workplace communication and team collaboration.
+        3 Jira: A project management tool used heavily by software teams for bug tracking and agile planning.
+        4 IDE: A software application that provides comprehensive tools (like a code editor, compiler, and debugger) in one place for programmers.
+        5 API: A set of rules that allows two different software applications to securely communicate and share data with each other.
+
+
+Task 4
+       Name any five programming languages and mention one popular use case for each.
+Answer
+      The five programming language and their use case:
+        1 Python: Widely used for artificial intelligence, machine learning, and data analysis.
+        2 JavaScript: The industry standard for building interactive, dynamic elements on web pages.
+        3 Java: Primarily used for building large-scale, secure enterprise applications and Android mobile apps.
+        4 C++: Preferred for performance-intensive applications like video game engines and operating systems.
+        5 SQL (Structured Query Language): Used exclusively for managing, querying, and manipulating data within relational databases.
+
+
+Task 5
+      What is the difference between a developer and a tester? Answer in 2 lines.
+Answer
+      Difference between a developer and a tester are
+        1 Developer: A developer designs, writes, and builds the code to create software applications based on project requirements.
+        2 Tester: A tester evaluates that software by running tests to find bugs, ensure quality, and verify that it functions exactly as intended before release.
