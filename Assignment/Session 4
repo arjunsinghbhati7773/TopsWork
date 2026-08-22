@@ -1,0 +1,50 @@
+Task 1
+      List all 6 phases of SDLC in order with one line about each. 
+Answer
+      Six Phases of SDLC 
+          1. Planning                  – Project goals, scope, resources, and schedule are decided.  
+          2. Requirement Analysis      – User and business requirements are collected and analyzed.  
+          3. Design                    – The so ware architecture, database, UI, and system design are prepared.  
+          4. Development/Implementa on – Developers write the actual code according to the design.  
+          5. Tes ng                    – The so ware is tested to find and fix bugs and ensure it meets requirements.  
+          6. Deployment & Maintenance  – The soware is released to users and maintained with updates and fixes.  
+
+
+Task 2
+      Write 3 differences between Agile and Waterfall models.IPv4  
+Answer
+      Agile vs Waterfall 
+          Agile                                                      Waterfall
+          Development is itera ve and divided into small cycles.     Development follows a fixed sequence of phases.
+          Requirements can change during development.                Requirements are usually finalized at the beginning. 
+          Tes ng and feedback happen con nuously.                    Tes ng generally happens a er development is completed.
+
+
+Task 3
+      Name the 3 main Scrum roles and write one line about the responsibility of each. 
+Answer
+      Three Main Scrum Roles 
+         1. Product Owner     – Manages the product requirements and priori zes the Product Backlog.  
+         2. Scrum Master      – Helps the team follow Scrum prac ces and removes obstacles.  
+         3. Developers        – Build and deliver the working product increment during each Sprint. 
+
+
+Task 4
+      What is a Sprint in Scrum? Men on its typical dura on. 
+Answer
+      A Sprint is a fixed period in Scrum during which the team works on selected tasks and produces a usable product increment. 
+      Typical dura on: 2–4 weeks, with 2 weeks being very common.
+
+
+Task 5
+      What do these Jira board columns mean: To Do, In Progress, Done, Backlog? 
+Answer
+      Jira Board Columns 
+          1. To Do – Tasks that are planned but work has not started yet.  
+          2. In Progress – Tasks that are currently being worked on.  
+          3. Done – Tasks that have been completed.  
+          4. Backlog – A list of pending tasks, features, bugs, or ideas that may be worked on in the future. 
+
+ 
+ 
+ 
