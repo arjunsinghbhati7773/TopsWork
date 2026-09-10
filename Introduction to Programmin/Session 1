@@ -1,2 +1,40 @@
 Task 1
     Write a short paragraph in your own words defining what a 'program' is and give one real-life example from any app you use daily (like Instagram, Zomato, or Paytm).
+Answer
+    A program is simply a step-by-step set of instructions written in a language that a computer can understand, telling it exactly what to do and how to do it.
+    for example:
+                when i use Paytm to send money the program check the amount, process the payment securely and shows a success message to both people.
+
+Task 2
+    List three popular programming languages you have heard of, and for each, mention whether it is usually compiled, interpreted, or can be both.
+        <br><br><em><strong>Hint:</strong> Think of languages like Java, Python, and JavaScript.</em>
+Answer
+    Language            Usually used as             Simple note
+    Java                compiler                    Java code is compiled into bytecode,then run by the java virtual machin.
+    Python              Interpreter                 Python code is commonly run by an Interpreter.
+    JavaScript          Can be both                 Browsers interpret/JIT-compile it, tools can also compile it for other user.
+
+Task 3
+    Draw a flowchart (on paper or using any online tool) for the process of booking a movie ticket on BookMyShow, starting from opening the app to receiving the booking confirmation.
+Answer
+    This flowchart shows the main steps from opening the app to getting the final confimation.
+
+                    start
+                      |
+           open the BookMyShow app
+                      |
+            Choose city and movie
+                      |
+        Select date,cinima and show time
+                      |
+                  pick seat
+                      |
+               Seat available?  -  no
+                      |
+                     yes
+                      |
+          Review booking and continue
+                      |
+         choose payment method and pay
+                      |
+          Recive booking confirmation
