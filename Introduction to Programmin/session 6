@@ -1,0 +1,116 @@
+Task 1
+  Write a program that prints the numbers from 10 down to 1 using a for loop, similar to a countdown timer.
+Answer
+  #include<stdio.h>
+  int main(){
+  	int i,n = 10;
+  	for(i=n;i>=1;i--){
+  		printf("%d\n",i);
+  	}
+  	return 0;
+  }
+
+
+Task 2
+  Create a menu-driven console app that lets the user: 1) View your favorite 3 IPL teams, 2) Add a new team, 3) Exit. Use a while loop to keep showing the menu until the user chooses Exit.
+    <br><br><em><strong>Hint:</strong> Use input() (or Scanner in Java) to get the user's choice each time.</em>
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	int i,j,choice=1,a=3;
+  	char teams[10][50]={"Chennai Super Kings","Mumbai Indians","Royal Challengers Bengaluru"};
+  	while(choice!=3){
+  		printf("1) View your favorite 3 IPL teams\n2) Add a new team\n3) Exit\nEnter : ");
+  		scanf("%d",&choice);
+  		getchar();
+  		switch(choice){
+  		case 1:
+  			for(i=0;i<a;i++){
+  					printf("%s\n",teams[i]);
+  			}
+  			break;
+  		case 2:
+  				printf("Enter team name : ");
+  				fgets(teams[a],50,stdin);
+  //				gets(teams[a]);
+  				a++;
+  				break;
+  			
+  		case 3:
+  			printf("Exiting....");
+  			return 1;
+  			break;
+  			
+  		default :
+  			printf("Wrong input......\nTry again\n\n");
+  		}
+  	}
+  	return 0;
+  }
+
+
+Task 3
+  Build a 'Guess the Song' game like Spotify — the program randomly picks a song name from a list and asks the user to guess it. Use a do-while loop so the user can keep guessing until they get it right.
+    <br><br><em><strong>Constraint:</strong> Use at least 3 song names of your choice.</em>
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  #include<stdlib.h>
+  
+  int main(){
+  	int i,randIndex;
+  	char guess[50],songs[10][50] = {
+          "Tum Hi Ho",
+          "Channa Mereya",
+          "Agar Tum Saath Ho",
+          "Phir Bhi Tumko Chaahunga",
+          "Kesariya",
+          "Tera Yaar Hoon Main",
+          "Khairiyat",
+          "Samjhawan",
+          "Hamari Adhuri Kahani",
+          "Ae Dil Hai Mushkil"
+      };
+      randIndex = (rand()%10);
+      printf("Songs List : \n");
+      for(i = 0;i<10;i++){
+      	printf("%s\n",songs[i]);
+  	}
+      printf("\nGuess the song game\n");
+      do{
+      	printf("Enter song : ");
+      	scanf(" %[^\n]", guess);
+  //    	fgets(guess,50,stdin);
+  	}while(strcmp(guess,songs[randIndex])!=0);
+  	printf("You guess the correct song the song is %s\n",songs[randIndex]);
+  	return 0;
+  }
+
+
+Task 4
+  Explain with your own example the difference between entry-controlled and exit-controlled loops by writing a short code snippet for each (for/while vs do-while)
+    and describing what happens if the loop condition is false at the start.
+Answer
+  #include <stdio.h>
+  
+  int main()
+  {
+      int i = 10;
+      printf("Entry-Control Loop:\n");
+      while(i <= 5)
+      {
+          printf("%d\n", i);
+          i++;
+      }
+      printf("While loop did not execute because condition was false.\n\n");
+      i = 10;
+      printf("Exit-Controlled Loop:\n");
+      do
+      {
+          printf("%d\n", i);
+          i++;
+      } while(i <= 5);
+      printf("Do-while executed once before checking the condition.\n");
+      return 0;
+  }
