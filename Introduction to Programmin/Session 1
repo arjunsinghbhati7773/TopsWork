@@ -25,11 +25,11 @@ Answer
                       |
             Choose city and movie
                       |
-        Select date,cinima and show time
+        Select date,cinima and show time               <
                       |
-                  pick seat
-                      |
-               Seat available?  -  no
+                  pick seat                            ^
+                      |                                ^
+               Seat available?          >              no
                       |
                      yes
                       |
@@ -38,3 +38,24 @@ Answer
          choose payment method and pay
                       |
           Recive booking confirmation
+
+Task 4
+    Write down the steps (as an algorithm, using simple numbered instructions) for ordering food on Swiggy — from opening the app to completing payment.
+Answer
+    Algorithm: Ordering food on Swiggy
+            
+            1. Open the Swiggy app and allow it to use your location, or enter your delivery address.
+            
+            2. Search for a restaurant or browse the available food options.
+            
+            3. Open a restaurant and choose the food items you want.
+            
+            4. Add the selected items to your cart.
+            
+            5. Review the cart, change quantities if needed, and apply a coupon if available.
+            
+            6. Tap "Proceed to Pay" and confirm the delivery address.
+            
+            7. Choose a payment method, such as UPI, card, wallet, cash on delivery, or net banking.
+            
+            8. Complete the payment and wait for the order confirmation screen.
