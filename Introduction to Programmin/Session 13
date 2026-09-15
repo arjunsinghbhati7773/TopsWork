@@ -1,0 +1,95 @@
+Task 1
+  Create a file called playlist.txt and write the names of your top 3 favorite songs from Spotify into it using write mode (w).
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  #include<stdlib.h>
+  int main(){
+  	FILE *ptr;
+  	ptr = fopen("playlist.txt","w");
+  	if(ptr==NULL){
+  		printf("Error in opening file");
+  		return 1;
+  	}
+  	fprintf(ptr,"Tum Hi Ho\n");
+  	fprintf(ptr,"Love Me Like You Do\n");
+  	fprintf(ptr,"Father Saab\n");
+  	fclose(ptr);
+  	printf("Data entered successfully in the file playlist.txt\n");
+  	return 0;
+  }
+
+
+Task 2
+  Open playlist.txt in read mode (r) and display each song name on a separate line in the console.
+Answer
+  #include<stdio.h>
+  int main(){
+  	FILE *fptr;
+  	fptr = fopen("playlist.txt","r");
+  	if(fptr==NULL){
+  		printf("Error in opening file\n");
+  		return 1;
+  	}
+  	char line[100];
+  	while(fgets(line,sizeof(line),fptr)!=NULL){
+  		printf("%s",line);
+  	}
+  	fclose(fptr);
+  	return 0;
+  }
+
+
+Task 3
+  Add two more song names to playlist.txt without deleting the existing ones by opening the file in append mode (a).
+Answer
+  #include<stdio.h>
+  int main(){
+  	FILE *fptr;
+  	fptr = fopen("playlist.txt","a");
+  	if(fptr==NULL){
+  		printf("Error in openenif file\n");
+  		return 1;
+  	}
+  	fprintf(fptr,"LOVE Story\n");
+  	fprintf(fptr,"Temporary Pyar\n");
+  	fclose(fptr);
+  	printf("File updated successfuly\n");
+  	return 0;
+  }
+
+
+Task 4
+  Write a program that reads all song names from playlist.txt and prints only those that contain the word 'love' (case-insensitive). Hint:Use the 'in' keyword or equivalent string method for filtering.
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	int i;
+  	FILE *fptr;
+  	fptr = fopen("playlist.txt","r");
+  	if(fptr==NULL){
+  		printf("Error in opening file\n");
+  		return 1;
+  	}
+  	char line[100];
+  	while(fgets(line,sizeof(line),fptr)!=NULL){
+  		for(i = 0; line[i] != '\0'; i++)
+  			{
+  			    line[i] = toupper(line[i]);
+  			}
+  		if(strstr(line,"LOVE")!=NULL){
+  			printf("%s",line);
+  		}
+  	}
+  	fclose(fptr);
+  	return 0;
+  }
+
+
+playlist
+  Tum Hi Ho
+  Love Me Like You Do
+  Father Saab
+  LOVE Story
+  Temporary Pyar
