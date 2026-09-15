@@ -1,0 +1,69 @@
+Task 1
+  Declare a string variable called songTitle and assign it the value 'Tum Hi Ho'.Print the length of the string using strlen().
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	char songTittle[] = "Tum Hi Ho";
+  	printf("lenght of songTitle(%s) : %d",songTittle,strlen(songTittle));
+  	return 0;
+  }
+
+
+Task 2
+  Take input for two usernames (as strings) and compare them using strcmp().Display whether they are the same or different.
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	char username1[25],username2[25];
+  	printf("Enter 1st username : ");
+  	scanf(" %[^\n]",username1);
+  	printf("Enter 2nd username  : ");
+  	scanf(" %[^\n]",username2);
+  	if(strcmp(username1,username2)==0){
+  		printf("Both usernames are same \n");
+  		}
+  	else{
+  		printf("Usernames are different\n");
+  	}
+  	return 0;
+  }
+
+
+Task 3
+  Copy the string 'Flipkart' into another string variable called shoppingApp using strcpy(), then print the value of shoppingApp.
+    Hint: Make sure to declare enough space for the destination string.
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	char appName[25] = "Flipkart";
+  	char shoppingApp[25];
+  	strcpy(shoppingApp,appName);
+  	printf("App : %s\tShopping App : %s\n",appName,shoppingApp);	
+  	return 0;
+  }
+
+
+Task 4 
+  Build a small script that takes the user's full name as input and creates a username by copying only the first 5 characters using strcpy(). Print the generated username.
+    Constraint: If the name is shorter than 5 characters, use the full name as the username.
+Answer
+  #include<stdio.h>
+  #include<string.h>
+  int main(){
+  	int i;
+  	char fullName[20];
+  	char userName[10],temp[7];
+  	printf("Enter your Full name : ");
+  	scanf(" %[^\n]",fullName);
+  	for(i=0;i<5;i++){
+  		temp[i] = fullName[i];
+  	}
+  	temp[i]='\0';
+  	strcpy(userName,temp);	
+  	printf("Username of %s : %s",fullName,userName);
+  	
+  	return 0;
+  }
