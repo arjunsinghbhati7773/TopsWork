@@ -1,0 +1,70 @@
+Task 1
+  Declare a 1D array called dailySteps with 7 elements to store your step count for each day of the week, assign sample values, and print each value using a loop.
+Answer
+  #include<stdio.h>
+  int main(){
+  	int i,dailySteps[] = {7842,9156,6734,8921,10284,12467,5893};
+  	printf("Weekly steps count : \n");
+  	for(i=0;i<7;i++){
+  		printf("day %d : %d\n",i+1,dailySteps[i]);
+  	}
+  	return 0;
+  }
+  
+
+Task 2
+  Create a 2D array called playlistRatings to store ratings for 3 Spotify playlists over 5 days (rows = playlists, columns = days). Fill it with sample numbers and print the ratings for the second playlist.
+Answer
+  #include<stdio.h>
+  int main(){
+  	int i;
+  	float playlistRatings[3][5]={{4.2,4.4,4.1,4.6,4.5},{3.8,4.0,4.2,4.1,4.4},{4.5,4.3,4.6,4.7,4.8}};
+  	printf("ratings for second playlist : \n");
+  	for(i=0;i<5;i++){
+  		printf("day %d  : %.1f\n",i+1,playlistRatings[1][i]);
+  	}
+  	return  0;
+  }
+
+
+Task 3
+  Build a function that takes a 1D array of 7 integers representing your daily Zomato order amounts and calculates the average spend for the week.
+    Hint: Use a loop to sum the values, then divide by the array length.
+Answer
+  #include<stdio.h>
+  float averageSpend(int amounts[],int length){
+  	int i,sum=0;
+  	for(i=0;i<length;i++){
+  		sum += amounts[i];
+  	}
+  	return (float)sum/length;
+  }
+  int main(){
+  	int zomatoOrders[7] = {250, 180, 320, 150, 450, 275, 200};
+  	int length = sizeof(zomatoOrders)/4;
+  	printf("Average spend for the week : %.2f",averageSpend(zomatoOrders,length));
+  	return 0;
+  }
+
+
+Task 4
+  Given a 2D array called cricketScores where each row represents an IPL match and columns represent runs scored by each team, write code to print the highest score from each match.
+Answer
+  #include<stdio.h>
+  int main(){
+  	int i,cricketScores[3][2] = {
+  		    {185, 172},
+  		    {210, 195},
+  		    {160, 165}
+  		};	
+  	for(i=0;i<3;i++){
+  		printf("Highest score of team %d : ",i+1);
+  		if(cricketScores[i][0]>cricketScores[i][1]){
+  			printf("%d\n",cricketScores[i][0]);
+  		}
+  		else{
+  			printf("%d\n",cricketScores[i][1]);
+  		}
+  	}
+  	return 0;
+  }
