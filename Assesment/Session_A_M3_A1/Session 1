@@ -1,0 +1,12 @@
+SCENARIO-You are a junior developer at a fintech startup building a digital wallet app. The team is
+         debating between Waterfall and Agile methodology. The project has frequently
+        changing requirements and the client expects to review working features every two weeks.
+Recommendation:  
+  Agile methodology.
+
+Justification: 
+  Agile operates in short, iterative cycles (sprints), making it ideal for client reviews every two weeks and rapidly changing requirements.
+
+Risks of Waterfall:
+  Inflexible Scope: Rigid upfront planning makes incorporating changing requirements late in development costly and difficult.
+  Delayed Feedback: Working software is delivered only near the end, delaying client reviews and increasing the risk of delivering an unwanted product.  
