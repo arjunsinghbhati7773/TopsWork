@@ -1,0 +1,42 @@
+SCENARIO-You are collaborating on a college project website with three teammates. Just before a
+         client demo, one teammate pushed incomplete code directly to the main branch,
+         breaking the layout for everyone else on the team.
+
+Question: Describe the Git workflow your team should adopt to prevent this from happening
+          again. Name at least two Git commands your team should use as part of this workflow and
+          explain the role of each command.
+Answer
+      ->Recommended Git Workflow
+      -Create a separate branch for each new feature or task.
+      Example: feature-login
+      
+      This keeps unfinished code separate from the stable main branch.
+      Make changes and commit regularly on the feature branch.
+      Test the code before sharing it.
+
+      Push the branch to the remote repository.
+      Other team members can review the changes.
+      
+      Create a Pull Request (PR) to merge the feature branch into main.
+      At least one teammate should review and approve the code.
+      
+      Merge only after testing and approval.
+      The main branch should always contain stable, working code.
+      
+      Protect the main branch so team members cannot directly push to it.
+      
+      Important Git Commands
+        1. git checkout -b feature-login
+           Creates a new branch and switches to it. Developers can work on their feature without affecting main.
+      
+        2. git add .
+           Stages the changed files so they are ready to be committed.
+      
+        3. git commit -m "Add login page"
+           Saves the changes in Git with a meaningful message.
+      
+        4. git push origin feature-login
+           Uploads the feature branch to the remote repository so teammates can review it and create a Pull Request.
+      
+     Simple Workflow
+      main → create feature branch → make changes → commit → push → Pull Request → code review → test → merge into main
