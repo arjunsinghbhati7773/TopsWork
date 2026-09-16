@@ -1,0 +1,27 @@
+SCENARIO-You are writing a C program to record daily rainfall data for a month (30 days). You
+         need to store all 30 readings, calculate the monthly average, and then identify which
+         specific days recorded rainfall above that average.
+
+Question: Explain why an array is the correct data structure for this task compared to using 30
+          separate variables. Describe the two-step logic your program would follow: first to compute the
+          average, then to identify the above-average days — and explain why both steps cannot be done
+          in a single loop.
+
+Answer-
+        An array is the correct data structure because we have 30 rainfall readings of the same type.
+        We can store all readings in one array, such as rainfall[30]. It is easier to use and process with a loop than using 30 separate variables.
+
+        Two-step logic
+          1. Calculate the average
+             Add all 30 rainfall readings.
+             Divide the total by 30.
+             This gives the monthly average.
+        
+          2. Find above-average days        
+             Check each rainfall value again.
+             Compare it with the average.
+             If the value is greater than the average, print that day.
+             Why two loops?
+        
+  Both steps cannot be done in one loop because we need all 30 readings first to calculate the final average.
+  Only after finding the average can we compare each day's rainfall with it.
