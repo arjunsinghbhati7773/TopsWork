@@ -1,0 +1,23 @@
+SCENARIO-You are debugging a C program that uses a pointer to traverse a string entered by the user. 
+         The program works correctly when the user types a name, but crashes
+         immediately when the input field is left empty (the user just presses Enter).
+
+Question: Explain why the program crashes on an empty string input and describe the check
+          your pointer-based solution must perform before dereferencing the pointer. How does traversing
+          a string using a pointer differ from traversing it using array index notation, and which approach
+          makes the empty-input bug easier to catch.
+
+Answer-
+        The program may crash on an empty string because the pointer reaches the end of the string and the program tries to access memory that it should not access.
+        A pointer-based solution should check that the pointer is not pointing to the null character '\0' before reading the character.
+
+        For example:
+          while (*ptr != '\0')
+          {
+              printf("%c", *ptr);
+              ptr++;
+          }
+        Pointer vs Array Index
+        Pointer: Uses *ptr to access the current character and ptr++ to move to the next character.
+        Array: Uses str[i] and increases i to access the next character.
+        Pointer traversal can make the empty-input problem easier to catch because we directly check *ptr != '\0' before accessing characters.
