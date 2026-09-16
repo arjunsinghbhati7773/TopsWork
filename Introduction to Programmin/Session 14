@@ -1,0 +1,203 @@
+Task 1
+  Given the following buggy code meant to calculate the total price of a Zomato order, identify and fix the syntax and runtime errors:<br><br>let items = ["Burger", "Pizza", "Fries"];
+  <br>let prices = [120, 250, 90];<br>let total = 0;
+  <br>for (i = 0; i < items.length; i++) {<br> total =+ prices[i]<br>}<br>console.log("Total price is: " + total);
+  <br><br><em><strong>Hint:</strong> Watch for assignment and loop variable issues.
+Answer
+  1. Loop Variable Declaration Error:
+  The variable i is used in the for loop without being declared.
+  
+  Incorrect:
+  for (i = 0; i < items.length; i++)
+  
+  Correct:
+  for (let i = 0; i < items.length; i++)
+  
+  Declaring i with let makes the loop variable properly defined and limits its scope to the loop.
+  
+  
+  2. Assignment Operator Error:
+  The statement total =+ prices[i] uses the wrong operator.
+  
+  Incorrect:
+  total =+ prices[i]
+  
+  The =+ operator assigns the positive value of prices[i] to total. It does not add the value to the existing total.
+  
+  Correct:
+  total += prices[i]
+  
+  The += operator adds the current price to total and stores the updated value back in total.
+  
+  
+  3. Missing Semicolon:
+  The statement inside the loop should end with a semicolon.
+  Incorrect:
+  total += prices[i]
+  
+  Correct:
+  total += prices[i];
+  
+  Corrected Code:
+  let items = ["Burger", "Pizza", "Fries"];
+  let prices = [120, 250, 90];
+  let total = 0;
+  
+  for (let i = 0; i < items.length; i++) {
+      total += prices[i];
+  }
+  console.log("Total price is: " + total);
+  
+  
+  Explanation:
+  The program contains three Zomato items: Burger, Pizza, and Fries. Their prices are 120, 250, and 90 respectively.
+  The for loop runs through the prices array. During each iteration, the current price is added to the total variable using the += operator.
+  
+  Calculation:
+  120 + 250 + 90 = 460
+  Therefore, the final output of the program is:
+  
+  Output:
+  Total price is: 460
+  
+  Conclusion:
+  The errors were fixed by declaring the loop variable using let, replacing =+ with +=, and adding the missing semicolon.
+  The corrected program successfully calculates the total price of the Zomato order as 460.
+
+
+  Task 2
+    Rewrite the following code to improve its indentation and add comments explaining each step, 
+    so that a beginner can understand what it does:<br><br>function isEven(num){if(num%2==0){return true;}else{return false;}}
+    Answer
+    // This function checks whether the given number is even or not.
+  function isEven(num) {
+  
+      // Check if the number is completely divisible by 2.
+      // The % operator gives the remainder.
+      if (num % 2 == 0) {
+  
+          // If the remainder is 0, the number is even.
+          return true;
+  
+      } else {
+  
+          // If the remainder is not 0, the number is odd.
+          return false;
+      }
+  }
+  
+  
+  Explanation:
+  1. The function is named isEven and it takes one parameter called num.
+  2. The expression num % 2 calculates the remainder when num is divided by 2.
+  3. If the remainder is 0, the number is even, so the function returns true.
+  4. If the remainder is not 0, the number is odd, so the function returns false.
+  
+  Examples:
+  isEven(10) → true
+  isEven(7) → false
+  isEven(24) → true
+  isEven(15) → false
+  
+  Conclusion:
+  The function isEven checks whether a number is even or odd. It returns true for an even number and false for an odd number. 
+  Proper indentation and comments make the code easier for beginners to read and understand.
+
+
+Task 3
+  Write a function formatFollowersCount(count) that takes a number and returns a formatted string like Instagram: 1500 as '1.5K', 1200000 as '1.2M', and numbers below 1000 as-is.
+  Add clear comments and use proper indentation.
+Answer
+  #include <stdio.h>
+
+  // This function formats the follower count
+  // into K (thousand) or M (million) format.
+  void formatFollowersCount(int count, char result[])
+  {
+      // If followers are 1 million or more,
+      // convert the count into millions.
+      if (count >= 1000000)
+      {
+          sprintf(result, "%.1fM", (float)count / 1000000);
+      }
+  
+      // If followers are 1000 or more,
+      // convert the count into thousands.
+      else if (count >= 1000)
+      {
+          sprintf(result, "%.1fK", (float)count / 1000);
+      }
+  
+      // If followers are below 1000,
+      // keep the number as it is.
+      else
+      {
+          sprintf(result, "%d", count);
+      }
+  }
+  
+  int main()
+  {
+      char result[20];
+  
+      // Format 1500 followers.
+      formatFollowersCount(1500, result);
+      printf("1500 followers = %s\n", result);
+  
+      // Format 1200000 followers.
+      formatFollowersCount(1200000, result);
+      printf("1200000 followers = %s\n", result);
+  
+      // Format a number below 1000.
+      formatFollowersCount(850, result);
+      printf("850 followers = %s\n", result);
+  
+      return 0;
+  }
+
+
+  Task 4
+    You are given a piece of JavaScript code that should print all even numbers from 1 to 10, but it doesn't work as expected:<br><br>for (let i = 1; i <= 10; i++) {<br> if (i % 2 = 0) {<br> console.log(i)<br> }<br>}<br><br>Find and fix the error, 
+    then rewrite the code with good indentation and at least one comment explaining the logic.
+Answer
+    Given Code:
+    
+    for (let i = 1; i <= 10; i++) {
+        if (i % 2 = 0) {
+            console.log(i)
+        }
+    }
+    
+    Error Identified:
+    The error is in the if condition:
+    if (i % 2 = 0)
+    Here, a single equal sign (=) is used. The = operator is an assignment operator, but we need to compare the value with 0.
+    The correct comparison operator is ==.
+    
+    Corrected condition:
+    if (i % 2 == 0)
+    
+    Corrected Code:
+    for (let i = 1; i <= 10; i++) {
+    
+        // Check if the number is divisible by 2 with no remainder.
+        if (i % 2 == 0) {
+            console.log(i);
+        }
+    }
+    
+    
+    Output:
+    
+    2
+    4
+    6
+    8
+    10
+    
+    
+    Explanation:
+    The for loop starts from 1 and runs until 10.
+    The % operator gives the remainder after division by 2. If the remainder is 0, the number is even.
+    The condition i % 2 == 0 checks whether the current number is even. If the condition is true, console.log(i) prints the number.
+    The main error was using = instead of == in the if condition.
