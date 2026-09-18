@@ -1,21 +1,21 @@
 Task 1
   Create a simple JavaScript function called calculateTotal that takes two numbers: itemPrice and quantity, and returns the total bill amount using arithmetic operators.
 Answer
-      #include <stdio.h>  
-      float calculateTotal(float itemPrice, int quantity) {
-          return itemPrice * quantity;
+      #include<stdio.h>
+      float calculatePrice(float ip,int q)
+      {
+      	return ip*q;
       }
-      int main() {
-          float price;
-          int quantity;      
-          printf("Enter price : ");
-          scanf("%f", &price);      
-          printf("Quantity : ");
-          scanf("%d", &quantity);      
-          printf("Total amount : %f", calculateTotal(price, quantity));      
-          return 0;
+      int main()
+      {
+      	float itemPrice;
+      	int quantity;
+      	printf("Enter Item price \n");
+      	scanf("%f",&itemPrice);
+      	printf("Enter product Quantity \n");
+      	scanf("%d",&quantity);
+      	printf("Total amout of items : %f",calculatePrice(itemPrice,quantity));
       }
-
 
 Task 2
   Build a Flipkart-style discount calculator: given product price, discount percentage, and a boolean isMember,
