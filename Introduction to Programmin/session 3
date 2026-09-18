@@ -23,11 +23,14 @@ Answer
   #include<stdio.h>
   int main()
   {
-    const GST = 18:
-    float productPrice = 1570;
-    float finalPrice = GST* productPrice ;
-    printf("Price: %.2f \nGST: %d%\nFinalPrice: %.3f", productPrice,GST, finalPrice);
-    return 0;
+  	printf("Welcome to zomatao online food delivery plateform\n");
+  	//constant variable decelaration
+  	const float gst=0.18;
+  	int orderPrice = 500;
+  	
+  	//print the actual & final price of order
+  	printf("Actual price of order : %d\n",orderPrice);
+  	printf("Final price of order : %f",(orderPrice+(orderPrice*gst)));
   }
 
 
