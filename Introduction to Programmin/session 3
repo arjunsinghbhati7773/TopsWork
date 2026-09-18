@@ -1,19 +1,21 @@
 Task 1
   Declare variables for a Flipkart product: productName (as a string), price (float), and rating (double). Assign sample values and print each variable with its data type.
 Answer
-  product.c  
-    #include<stdio.h>
-    int main()
-    {
-      char productName [] = "HeadPhone";
-      float price = 678;
-      double rating = 4.8;
-      printf("Product Name: %s (Data Type: string)\n", productName);
-      printf("Price: %.2f (Data Type: float)\n", price);
-      printf("Rating: %1f (Data Type: double)\n", rating);
-      return 0;
-    }
-
+  flipkart.c  
+  #include<stdio.h>
+  int main()
+  {
+  	printf("Welcome to Filpkart website\n");
+  	//Variable Decelaration & and value incert
+  	char productName[] = "Whey_protine";
+  	float price = 3000;
+  	double rating = 4.5;
+  	
+  	//print Variable & its data type
+  	printf("The Name of product is : %s\t (Data type : String)\n",productName);
+  	printf("The price of product is : %f\t(Data type : float)\n",price);
+  	printf("The customer rating of product is : %f\t (Data type : double )",rating);
+  }
 
 Task 2
   Create a constant variable to store the GST rate (for example, 18%) and use it to calculate the final price of a Zomato order with a given base price.<br><br><em><strong>Constraint:</strong> The GST rate must not be changeable after its initial assignment.</em>
