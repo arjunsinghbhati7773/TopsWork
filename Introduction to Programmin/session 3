@@ -38,14 +38,16 @@ Task 3
   Write a program that stores your favorite Spotify playlist's name (string), total number of songs (int), and average song duration in minutes (float). Print all values in a single formatted sentence.
 Answer
   product.c
-    #include<stdio.h
+    #include<stdio.h>
     int main()
     {
-      char playlist[] = "Arijit Singh";
-      int song = 15;
-      float durationAvg = 3.5;
-      printf("Playlist: %s \nSong: %d\nAverage Duration %.3f",playlist, song, durationAvg);
-      return 0;
+    	// variable decelaration
+    	char fevSong[]="Moosa Tape";
+    	int noOfSongs =55;
+    	float avgSong = 5.00;
+    	
+    	//print variable value
+    	printf("Platlist name : %s \nNo of song : %d \nEach song duration in miniuts : %f",fevSong,noOfSongs,avgSong);
     }
 
 
