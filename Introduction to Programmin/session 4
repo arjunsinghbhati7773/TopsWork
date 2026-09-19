@@ -117,15 +117,17 @@ Task 5
   Write a code snippet that demonstrates the difference between pre-increment (++count) and post-increment (count++) 
     by logging the values before and after using both on a followerCount variable.
 Answer
-  #include <stdio.h>
-  int main() 
+  #include<stdio.h>
+  int main()
   {
-      int followerCount = 100;
-      printf("Initial followers: %d\n", followerCount);
-      printf("Using ++followerCount: %d\n", ++followerCount);
-      printf("After pre-increment: %d\n\n", followerCount);
-      followerCount = 100;
-      printf("Using followerCount++: %d\n", followerCount++);
-      printf("After post-increment: %d\n", followerCount);
-      return 0;
+  	int num1=99;
+  	int num2=200;
+  	//pre increment
+  	printf("the value of num1 is : %d\n",num1);
+  	printf("The value of num1 after per inceremnt %d\n\n\n",++num1);	
+  	
+  	//post increment
+  	printf("The value of num2 : %d\n",num2);
+  	printf("The value of num2 after post increment %d\n",num2++);
+  	printf("The vlaue of num2 now is %d",num2);
   }
