@@ -22,28 +22,31 @@ Task 2
     use arithmetic and logical operators to calculate the final price (apply an extra 5% off if isMember is true).
 Answer
     #include<stdio.h>
-    float calculateTotal(float itemPrice,int quantity)
+    float clacPrice(float price,float dis)
     {
-    	return itemPrice * quantity;	
+    	return -(price*dis/100)+price;
     }
     int main()
     {
-    	float price,discountPrcnt;
-    	int isMember;
-    	int quantity;
-    	printf("Enter price : ");
-    	scanf("%f",&price);
-    	printf("Enter discountPrcnt : ");
-    	scanf("%f",&discountPrcnt);
-    	printf("isMember ? (0-NO/1-YES) : ");
-    	scanf("%d",&isMember);
-    	float finalPrice = price - (price * discountPrcnt/100);
-    	if(isMember)
-      {
-    		finalPrice = finalPrice - (finalPrice * 5/100);
+    	float productPrice;
+    	float discount=10.5;
+    	float extraDis = 5;
+    	bool ismember;
+    	int userinput;
+    	printf("Enter your product price\n");
+    	scanf("%f",&productPrice);
+    	printf("If you are flipkart member enter 1 other enter 2\n");
+    	scanf("%d",&userinput);
+    	ismember = userinput;
+    	if(ismember)
+    	{
+    		printf("You are flipkart member so you get 5 percent Discount\n");
+    		printf("%f",(productPrice*extraDis/100)-clacPrice(productPrice,discount));
     	}
-    	printf("\nFinal price after discount : - %f",finalPrice);
-    	return 0;
+    	else
+    	{
+    		printf("Your product price is %f",clacPrice(productPrice,discount));
+    	}
     }
 
 
