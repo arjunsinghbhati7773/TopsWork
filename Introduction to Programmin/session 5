@@ -74,57 +74,53 @@ Task 3
   Create a Flipkart discount calculator that asks the user for the total cart amount. Use nested if statements to check: if amount > 2000, apply 20% discount; else if amount > 1000, apply 10% discount; else, no discount. Print the final amount to pay.
     <br><br><em><strong>Hint:</strong> Use nested ifs to check each discount slab.</em>
 Answer
-  #include <stdio.h>
-  
-  int main() {
-      float amount, finalAmount;
-  
-      printf("Enter total cart amount: ");
-      scanf("%f", &amount);
-  
-      if (amount > 2000) {
-          finalAmount = amount - (amount * 20 / 100);
-      } else {
-          if (amount > 1000) {
-              finalAmount = amount - (amount * 10 / 100);
-          } else {
-              finalAmount = amount;
-          }
-      }
-  
-      printf("Final amount to pay: Rs. %.2f\n", finalAmount);
-  
-      return 0;
+  #include<stdio.h>
+  int main()
+  {
+  	printf("Enter your total cart amount\n");
+  	float amount;
+  	float discountMaxx=20;
+  	float discountMin=10;
+  	scanf("%f2",&amount);
+  	printf("Your cart amount is : %f\n",amount);
+  	if(amount>=2000)
+  	{
+  		printf("Your final princ with 20 percent discount : %f",amount-(amount*discountMaxx/100));
+  	}
+  	else if(amount>=1000)
+  	{
+  		printf("Your final princ with 20 percent discount : %f",amount-(amount*discountMin/100));
+  	}
+  	else
+  	{
+  		printf("you are not eligible for discount so you final price is : %f",amount);
+  	}
   }
-
 
 Task 4
   Write a program that takes a user's age and checks eligibility for three things using if-else statements: if age >= 18, print 'Eligible for Driving License'; if age >= 21, also print 'Eligible for Credit Card'; if age >= 25, also print 'Eligible for Car Rental'.
     Print all applicable messages for the given age.
 Answer
-  #include <stdio.h>
-  
-  int main() {
-      int age;
-  
-      printf("Enter your age: ");
-      scanf("%d", &age);
-  
-      if (age >= 18) {
-          printf("Eligible for Driving License\n");
-      }
-  
-      if (age >= 21) {
-          printf("Eligible for Credit Card\n");
-      }
-  
-      if (age >= 25) {
-          printf("Eligible for Car Rental\n");
-      }
-  
-      if (age < 18) {
-          printf("Not eligible for Driving License, Credit Card, or Car Rental\n");
-      }
-  
-      return 0;
+  #include<stdio.h>
+  int main()
+  {
+  	printf("Enter age for checking eligiblity\n");
+  	int age;
+  	scanf("%d",&age);
+  	if(age>=18)
+  	{
+  		printf("Eligible for Driving licence\n");
+  	}
+  	if(age>=21)
+  	{
+  		printf("Eligible for credit card\n");
+  	}
+  	if(age>=25)
+  	{
+  		printf("Eligible for car rental\n");
+  	}
+  	else
+  	{
+  		printf("No eligiblity");
+  	}
   }
