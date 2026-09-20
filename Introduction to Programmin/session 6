@@ -17,36 +17,43 @@ Task 2
 Answer
   #include<stdio.h>
   #include<string.h>
-  int main(){
-  	int i,j,choice=1,a=3;
-  	char teams[10][50]={"Chennai Super Kings","Mumbai Indians","Royal Challengers Bengaluru"};
-  	while(choice!=3){
-  		printf("1) View your favorite 3 IPL teams\n2) Add a new team\n3) Exit\nEnter : ");
+  int main()
+  {
+  	int choice=0;
+  	char team[3][30]={"Chennai Super Kings","Royal Chalanger Benguluru","Mumbai Indians"};
+  	while(choice!=3)
+  	{
+  		printf("Press 1 for see your favorit team\nPress 2 for add team new team name in favorite list\nPress 3 for exit\n");
+  		printf("Enter your choice :\n");
   		scanf("%d",&choice);
-  		getchar();
-  		switch(choice){
-  		case 1:
-  			for(i=0;i<a;i++){
-  					printf("%s\n",teams[i]);
-  			}
-  			break;
-  		case 2:
-  				printf("Enter team name : ");
-  				fgets(teams[a],50,stdin);
-  //				gets(teams[a]);
-  				a++;
-  				break;
-  			
-  		case 3:
-  			printf("Exiting....");
-  			return 1;
-  			break;
-  			
-  		default :
-  			printf("Wrong input......\nTry again\n\n");
+  		switch(choice)
+  		{
+  			case 1:
+  				{
+  					printf("Your favorite team is :\n");
+  					for(int i=0;i<3;i++)
+  					{
+  						printf("%s\n",team[i]);
+  					}
+  					break;
+  				}
+  			case 2:
+  				{
+  					for(int i=0;i<3;i++)
+  					{
+  						printf("Enter your favorite team name : \n");
+  						scanf(" %[^\n]",team[i]);
+  					}
+  					break;
+  				}	
+  			case 3:
+  				{
+  					printf("Thank you for visiting\n\n\n");
+  					break;
+  				}
+  			default : printf("Wrong choice\n\n");
   		}
   	}
-  	return 0;
   }
 
 
