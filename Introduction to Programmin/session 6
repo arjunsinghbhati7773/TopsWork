@@ -91,25 +91,19 @@ Task 4
   Explain with your own example the difference between entry-controlled and exit-controlled loops by writing a short code snippet for each (for/while vs do-while)
     and describing what happens if the loop condition is false at the start.
 Answer
-  #include <stdio.h>
-  
-  int main()
-  {
-      int i = 10;
-      printf("Entry-Control Loop:\n");
-      while(i <= 5)
-      {
-          printf("%d\n", i);
-          i++;
-      }
-      printf("While loop did not execute because condition was false.\n\n");
-      i = 10;
-      printf("Exit-Controlled Loop:\n");
-      do
-      {
-          printf("%d\n", i);
-          i++;
-      } while(i <= 5);
-      printf("Do-while executed once before checking the condition.\n");
-      return 0;
-  }
+#include<stdio.h>
+int main()
+{
+	int i=5;
+	printf("while loop \nEnter control\nIt chek condition first\n");
+	while(i>=10)
+	{
+		printf("%d",i);
+	}
+	printf("it does't execute because conditon is false\n\n\n");
+	printf("do while loop\nexit control\nit execute 1 time and then chek condition\n");
+	do
+	{
+		printf("code run 1 time");
+	}while(i>=10);
+}
