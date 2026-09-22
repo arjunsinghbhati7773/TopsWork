@@ -61,37 +61,29 @@ Task 3
   Build a 'Guess the Song' game like Spotify — the program randomly picks a song name from a list and asks the user to guess it. Use a do-while loop so the user can keep guessing until they get it right.
     <br><br><em><strong>Constraint:</strong> Use at least 3 song names of your choice.</em>
 Answer
-  #include<stdio.h>
+ #include<stdio.h>
   #include<string.h>
   #include<stdlib.h>
-  
-  int main(){
-  	int i,randIndex;
-  	char guess[50],songs[10][50] = {
-          "Tum Hi Ho",
-          "Channa Mereya",
-          "Agar Tum Saath Ho",
-          "Phir Bhi Tumko Chaahunga",
-          "Kesariya",
-          "Tera Yaar Hoon Main",
-          "Khairiyat",
-          "Samjhawan",
-          "Hamari Adhuri Kahani",
-          "Ae Dil Hai Mushkil"
-      };
-      randIndex = (rand()%10);
-      printf("Songs List : \n");
-      for(i = 0;i<10;i++){
-      	printf("%s\n",songs[i]);
+  int main()
+  {
+  	char song[5][20]={"kese ho","financer","jodi no 1","gundey","god favioret"};
+  	int random=rand() % 5;
+  	char guess[20];
+  	while(1)
+  	{
+  		printf("guess the song \nWe have 5 song in our playlist\n");
+  		printf("1 kese ho\n2 financer\n3 jodi no 1\n4 gundey\n5 god favioret\n");
+  		printf("Guess the song\n");
+  		scanf(" %[^\n]",guess);
+  		if(strcmp(guess,song[random])==0)
+  		{
+  			printf("corret\n");
+  		}
+  		else
+  		{
+  			printf("wrong guess\n");
+  		}
   	}
-      printf("\nGuess the song game\n");
-      do{
-      	printf("Enter song : ");
-      	scanf(" %[^\n]", guess);
-  //    	fgets(guess,50,stdin);
-  	}while(strcmp(guess,songs[randIndex])!=0);
-  	printf("You guess the correct song the song is %s\n",songs[randIndex]);
-  	return 0;
   }
 
 
