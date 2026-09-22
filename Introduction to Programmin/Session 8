@@ -30,29 +30,30 @@ Task 2
     <br><br><em><strong>Hint:</strong> In languages like JavaScript, arrays are passed by reference.In C/C++, use pointers for reference behavior.</em>
 Answer
   #include<stdio.h>
-  #include<string.h>
-  void addToCart(char list[][50],char productName[],int *count){
-  	int i;
-  	strcpy(list[*count],productName);	
-  	(*count)++;
-  	printf("Updated Carts : ");
-  	for(i=0;i< *count;i++){
-  		printf("%s,	",list[i]);
-  	}
-  }
-  
-  int main(){
-  	char list[10][50];
-  	int i,count = 0;
-  	char productName[50];
-  	for(i=0;i<10;i++){
-  		printf("\nEnter product name : ");
-  		scanf(" %[^\n]",productName);
-  		addToCart(list,productName,&count);
-  	}
-  	return 0;
-  }
-
+#include<string.h>
+void addToCart(char list[][20],char productName[20],int *count)
+{
+	strcpy(list[*count],productName);
+	(*count)++;
+	printf("list updated : ");
+	for(int i=0;i<*count;i++)
+	{
+		printf("%s, ",list[i]);
+	}
+	printf("\n");
+}
+int main()
+{
+	char list[10][20];
+	char productName[20];
+	int count = 0;
+	for(int i=0;i<10;i++)
+	{
+		printf("Enter product detail\n");
+		scanf(" %[^\n]",productName);
+		addToCart(list,productName,&count);
+	}
+}
 
  Task 3
   Write two functions: increaseFollowersByValue and increaseFollowersByReference. Each should take a followers count and add 1000 to it, but one should use pass-by-value and the other pass-by-reference.
