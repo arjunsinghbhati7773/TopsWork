@@ -2,32 +2,34 @@ Task 1
   Use nested for loops to print a grid of emojis representing a 5x5 Instagram post feed, where each cell shows a symbol.
 Answer
   #include<stdio.h>
-  int main(){
-  	int i,j;
-  	for(i = 1;i<=5;i++){
-  		for(j = 1;j<=5;j++){
-  			printf("[ ^] ");
-  		}
-  		printf("\n");
-  	}
-  	return 0;
-  }
+int main()
+{
+	for(int i=1;i<=5;i++)
+	{
+		for(int j=1;j<=5;j++)
+		{
+			printf("h");
+		}
+		printf("\n");
+	}
+}
 
 
 Task 2
   Build a right-angled triangle pattern using nested loops, where each row displays increasing numbers starting from 1, similar to how a leaderboard on a gaming app shows rank numbers.    
 Answer
-  #include<stdio.h>
-  int main(){
-  	int i,j;
-  	for(i=1;i<=5;i++){
-  		for(j = 1;j<=i;j++){
-  			printf("* ");
-  		}
-  		printf("\n");
-  	}
-  	return 0;
-  }
+#include<stdio.h>
+int main()
+{
+	for(int i=1;i<=5;i++)
+	{
+		for(int j=1;j<=i;j++)
+		{
+			printf("*");
+		}
+		printf("\n");
+	}
+}
 
 
 Task 3
