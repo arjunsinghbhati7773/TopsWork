@@ -1,0 +1,160 @@
+/*1.Create a class called Song in your preferred OOP language with private properties title and artist. 
+Add public getter and setter methods to access and modify these properties, then create an object and update its title.*/
+#include<iostream>
+using namespace std;
+
+class Song{
+	
+	string tittle;
+	string artist;
+	
+	public :
+	
+	string gettittle(){
+		return tittle;
+	}
+	
+	string getartist(){
+		return artist;
+	}	
+	
+	void set(string tittle,string artist){
+		this->tittle = tittle;
+		this->artist = artist;
+	}
+};
+
+int main(){
+	Song s1;
+	s1.set("Ashqui","Arijit");
+	cout<<"Tittle : "<<s1.gettittle()<<endl<<"Artist : "<<s1.getartist();
+	return 0;
+}
+
+/*2.Build a class called InstaStory with a protected property storyViews. Create a 
+subclass called SponsoredStory that can access and display the storyViews value.*/
+
+#include<iostream>
+using namespace std;
+
+class InstaStory{
+	protected : 
+		int StoryViews;	
+};
+
+class SponsoredStory : public InstaStory{
+	public : 
+		void set(int StoryViews){
+			this->StoryViews = StoryViews;
+		}
+		
+		void get(){
+			cout<<StoryViews;
+		}
+};
+
+int main(){
+	SponsoredStory story;
+	story.set(157);
+	cout<<"Accessing base class protected property StoryViews using Sponsored Story object : ";
+	story.get();
+	return 0;
+}
+
+
+/*Imagine a Flipkart-like app: create an abstract class Product with an abstract method upload(). 
+Then, create two subclasses, Electronics and Clothing, that each implement the upload() method to print a different upload message.*/
+#include<iostream>
+using namespace std;
+
+class Product{
+	protected :
+		virtual void upload() = 0;
+};
+
+class Electronics : public Product{
+	public :
+		void upload () override
+		{
+			cout<<"Uploading Electronic product.....\n";	
+		}
+};
+
+class Clothing : public Product{
+	public :
+		void upload () override
+		{
+			cout<<"Uploading Clothing product.....\n";	
+		}
+};
+
+int main(){
+	Electronics prdct1;
+	prdct1.upload();
+	Clothing prdct2;
+	prdct2.upload();
+	return 0;
+}
+
+/*4.Refactor the following code so that the user’s phone number in the UserProfile class 
+is private and can only be set or retrieved using public methods.Hint: Add private access 
+modifier to the phone number and create setPhoneNumber() and getPhoneNumber() methods.*/
+
+#include<iostream>
+using namespace std;
+
+class UserProfile{
+	private :
+		string PhoneNo;
+		
+	public :
+		void setPhone(string PhoneNo){
+			this->PhoneNo = PhoneNo;
+		}
+		
+		string getPhone(){
+			return this->PhoneNo;
+		}
+};
+int main(){
+	UserProfile user1;
+	user1.setPhone("8461792182");
+	cout<<"User's Phone number : "<<user1.getPhone()<<endl;
+	return 0;
+}
+
+
+5.Explain in your own words the difference between encapsulation and abstraction, using examples from any social media app you use daily (like Instagram or WhatsApp).
+
+Encapsulation means protecting data by keeping it private and allowing access only through controlled methods.
+Example: In Instagram, your phone number is not directly accessible or editable by anyone. You can update it only through the app’s settings.
+class UserProfile {
+private:
+    string phoneNumber;
+
+public:
+    void setPhoneNumber(string number) {
+        phoneNumber = number;
+    }
+
+    string getPhoneNumber() {
+        return phoneNumber;
+    }
+};
+Here, phoneNumber is protected using private. This is encapsulation.
+Abstraction means showing only the important features and hiding the complex internal process.
+Example: In WhatsApp, you press the Send button to send a message. You do not need to know how the message is encrypted, sent through the internet, or delivered to the receiver.
+class Message {
+public:
+    virtual void send() = 0;
+};
+
+class WhatsAppMessage : public Message {
+public:
+    void send() override {
+        cout << "Message sent on WhatsApp";
+    }
+};
+Difference:
+- Encapsulation: Protects and controls data. Example: keeping an Instagram phone number private.
+- Abstraction: Hides complex working details. Example: WhatsApp hides how a message is delivered.
