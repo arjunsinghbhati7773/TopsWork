@@ -1,1 +1,27 @@
-hello
+1. Install MySQL Workbench on your computer, connect to the local MySQL server, and take a screenshot of the default databases shown in the Schemas panel.
+Answer Download and Install MySQL Workbench
+       Go to the official MySQL downloads page, download the installer for your operating system (Windows, macOS, or Linux), and run through the setup wizard using the default settings.
+       Verification: Open your applications menu or desktop shortcuts to confirm that MySQL Workbench is installed and opens successfully.
+       Connect to the Local MySQL Server
+
+2. Create a new database called InstaClone in MySQL Workbench, then create a table named Users with columns: user_id (INT, primary key), username (VARCHAR), email (VARCHAR), and followers_count (INT).
+Answer CREATE DATABASE instaClone;
+       CREATE TABLE users(user_id int PRIMARY key,userName varchar(10),email varchar(50),follower_count varchar(10));
+
+3.Insert 3 sample users into the Users table you created, using realistic Instagram-style usernames and follower counts.
+Answer  INSERT INTO users(user_id,userName,email,follower_count) VALUES(1001,'arjun7773','arjun@gamil.com',300);
+        INSERT INTO users(user_id,userName,email,follower_count) VALUES(1002,'anurag73','anurag@gamil.com',350);
+        INSERT INTO users(user_id,userName,email,follower_count) VALUES(1003,'manan53','manan@gamil.com',250);
+
+4.Create another table in the InstaClone database called Posts with columns: post_id (INT, primary key), user_id (INT), caption (VARCHAR), and post_date (DATE). Add a foreign key from Posts.user_id to Users.user_id to establish a relationship.
+Answer  CREATE TABLE Posts (post_id INT PRIMARY KEY,user_id INT,caption VARCHAR(255),post_date DATE,FOREIGN KEY (user_id) REFERENCES Users(user_id));
+
+5.Write a short comparison (3-4 lines each) of MySQL, PostgreSQL, Oracle, and SQLite, focusing on where each one is commonly used (for example: web apps, mobile apps, enterprise systems, etc.).
+Answer MySQLWidely 
+           used for web applications, content management systems (like WordPress), and e-commerce platforms. It is optimized for speed on read-heavy workloads and forms a core part of traditional LAMP stacks powering websites and online services.   
+       PostgreSQL
+            Commonly chosen for complex enterprise systems, data warehousing, and modern web applications that demand strict data integrity. It is frequently utilized in financial tech, geospatial analysis, and backends requiring advanced data types (like JSON and arrays).   
+       Oracle Database
+            De-facto standard for mission-critical, large-scale enterprise systems such as global banking, insurance platforms, and massive corporate ERP solutions. It is built for extreme performance, high availability, and heavy transaction processing under immense data loads.
+       SQLite
+            Designed for lightweight, embedded use cases such as local storage in mobile apps (iOS/Android) and desktop software. Because it is serverless and self-contained within a single file, it is also popular for local caching, IoT devices, and automated testing.   
