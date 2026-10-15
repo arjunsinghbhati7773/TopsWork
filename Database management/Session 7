@@ -1,1 +1,14 @@
+1.Create a table called Restaurant with columns: id, name, location, and cuisine. Apply NOT NULL constraint to name and location, and make id the PRIMARY KEY.
+Answer CREATE TABLE restaurants(id int PRIMARY key,name varchar(10) NOT NUll,location varchar(10) Not null,cuisine varchar(10));
 
+2.Create a table called FoodOrder with columns: order_id, restaurant_id, user_id, and order_total. Set order_id as PRIMARY KEY, and add a FOREIGN KEY constraint on restaurant_id referencing Restaurant(id).
+Answer CREATE TABLE foodOrder(order_id int PRIMARY KEY,restaurant_id int,order_total varchar(10),FOREIGN key (restaurant_id) REFERENCES restaurants(id));
+
+3.Insert 6 rows into a table called SpotifyUser with columns: user_id, username, email, and subscription_type. Ensure that username is UNIQUE and email is NOT NULL.<br><br><em><strong>Hint:</strong> Use the UNIQUE and NOT NULL constraints when creating the table.</em>
+Answer INSERT INTO spotifyuser(userId,userName,email,subType) values(101,'arjun','aj@gamil.com','plus'),(102,'anuj','ak@gamil.com','plus'),(103,'karan','kh@gamil.com','basic'),(104,'aman','am@gamil.com','pre'),(15,'manan','mn@gamil.com','no'),(16,'kriti','kr@gamil.com','plus');
+
+4.Create a VIEW named TopSpendersView that shows usernames and order_total from a FoodOrder table where order_total is greater than 1000.
+Answer CREATE VIEW topSenderView As SELECT userName, order_total FROM foodOrder WHERE order_total > 1000;
+
+5.Write a SQL query to list all users from the TopSpendersView who have spent more than 2000, sorted by order_total descending.<br><br><em><strong>Constraint:</strong> Only use the TopSpendersView for your query, not the original FoodOrder table.</em>
+Answer SELECT username, order_total FROM TopSpendersView WHERE  order_total > 2000 ORDER BY order_total DESC;
