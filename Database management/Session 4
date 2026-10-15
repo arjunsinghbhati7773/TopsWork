@@ -1,1 +1,15 @@
+1.Create a table called Playlist with columns: id, song_name, artist, genre, and play_count. Insert at least 5 sample records representing your favorite songs from Spotify.
+Answer CREATE TABLE playlists(id int PRIMARY KEY AUTO_INCREMENT,songName varchar(10),artist varchar(10),genre varchar(10),playCount int(10));
+       INSERT INTO playlists(songName,artist,genre,playcount) values(295,'SMW','rock',200),('ashke','karan','pop',100),('Kaali Scorpio','masoom','rock',200),('boss','jass','pop',200),('brabus','parmish','pop',200);
 
+2.Write a SELECT query to display only the song_name and artist from the Playlist table, but show the artist column as 'Singer' using an alias.
+Answer SELECT songName, artist as singer FROM playlists;
+
+3.Write a SELECT query to find all songs in the Playlist table where the genre is 'Pop' and play_count is greater than 100. Sort the results by play_count in descending order.
+Answer SELECT * FROM playlists where genre = 'pop' AND playCount > 100 ORDER BY playCount DESC;
+
+4.Use the COUNT aggregate function to find out how many songs in your Playlist table belong to the genre 'Hip-Hop'.
+Answer SELECT COUNT(*) hip_hop_song_count FROM playlists WHERE genre='hip hop';
+
+5.Write a SELECT query that shows the total number of plays (SUM of play_count) for each genre in your Playlist table, grouped by genre.<br><br><em><strong>Hint:</strong> Use GROUP BY with the SUM function to aggregate play counts by genre.</em>
+Answer SELECT genre, SUM(playCount) as total_play from playlists GROUP by genre;
