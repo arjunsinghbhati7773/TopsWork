@@ -1,1 +1,14 @@
+1.Create two tables in SQL: influencers (with influencer_id as PRIMARY KEY and name) and posts (with post_id as PRIMARY KEY, influencer_id as FOREIGN KEY, and caption). Insert at least 3 influencers and 2 posts for each influencer.
+Answer CREATE TABLE influencer(influencer_id int(5) PRIMARY KEY,name varchar(10)); CREATE TABLE post(post_id int(5) PRIMARY KEY,influencer_id int(5),caption varchar(50) ,FOREIGN KEY (influencer_id) REFERENCES influencer(influencer_id));
+       INSERT INTO influencer(influencer_id,name) VALUES(0001,'Elvish'),(0008,'Sidhu'),(0003,'Vikas');
+       INSERT INTO post(post_id,influencer_id,caption) VALUES(101,0001,'good'),(102,0001,'best'),(103,0008,'nice'),(104,0008,'best'),(105,0003,'very nice'),(106,0003,'good');
 
+
+2.Write an SQL query using INNER JOIN to display each post's caption along with the name of the influencer who posted it, based on the tables you created.
+Answer SELECT post.caption, influencer.name FROM post INNER JOIN influencer ON post.influencer_id = influencer.influencer_id;
+
+3.Write an SQL query using LEFT JOIN to show all influencers and their posts, including influencers who haven't posted anything yet. If an influencer has no posts, display 'No Posts' in the caption column.<br><br><em><strong>Hint:</strong> Use IFNULL or COALESCE to handle NULL values in the result.</em>
+Answer SELECT influencer.name, COALESCE(post.caption,'No Post') as caption FROM influencer LEFT JOIN post on influencer.influencer_id = post.influencer_id;
+
+4.Write an SQL query using RIGHT JOIN to list all posts and the corresponding influencer's name, ensuring that even posts without a matching influencer_id (if any) are shown.
+Answer SELECT influencer.name,post.post_id,post.caption FROM influencer RIGHT JOIN post on influencer.influencer_id = post.influencer_id;
