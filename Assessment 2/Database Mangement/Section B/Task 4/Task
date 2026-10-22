@@ -1,0 +1,45 @@
+Task 4: PL/SQL Order Placement Procedure
+
+Create a stored procedure named place_order that accepts customer_id, restaurant_id, and amount as parameters
+Query
+  DELIMITER // 
+  CREATE PROCEDURE place_order(customer_id int,restaurant_id int,amount int(10)) BEGIN INSERT INTO place_order(customer_id,restaurant_id,amount) VALUES(customer_id,restaurant_id,amount); END // 
+  DELIMITER ;
+
+Deduct the amount from the customer's wallet_balance in a customers table and insert a new record into the orders table.
+Query
+  DELIMITER // CREATE PROCEDURE customer_wallet_balance(customer_name varchar(10),restaurant_id int,amount int) BEGIN START TRANSACTION; UPDATE customer SET Wallet_ballance = Wallet_balance - amount WHERE name = customer_name; INSERT INTO orders(restaurants_id,customer_name,Total_amount,order_date) 
+  VALUES(restaurants_id,customer_name,Total_amount, Curdate()); COMMIT; End// 
+  DELIMITER ;
+
+Use a transaction block: if the customer's wallet_balance is insufficient, ROLLBACK everything; otherwise COMMIT
+Query
+  DELIMITER //
+  CREATE PROCEDURE place_order_safe( IN p_customer_name VARCHAR(50), IN p_restaurant_id INT, IN p_amount DECIMAL(10, 2) ) BEGIN DECLARE v_balance DECIMAL(10, 2);
+  
+  START TRANSACTION;
+  
+  SELECT wallet_ballence INTO v_balance 
+  FROM customers 
+  WHERE name = customer_name;
+  
+  IF v_balance >= amount THEN
+      UPDATE customers 
+      SET wallet_ballence = wallet_ballence - amount 
+      WHERE name = p_customer_name;
+  
+      INSERT INTO orders (restaurants_id, Customer_name, Total_amount, Order_date) 
+      VALUES (p_restaurant_id, p_customer_name, p_amount, CURDATE());
+  
+    
+      COMMIT;
+      SELECT 'Order placed successfully!' AS Status;
+  
+  ELSE
+      ROLLBACK;
+      SELECT 'Insufficient balance! Order failed and rolled back.' AS Status;
+  END IF;
+  END //
+  DELIMITER ;
+
+
