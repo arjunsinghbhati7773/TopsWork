@@ -1,0 +1,115 @@
+Mini Project:  Food Delivery Platform — Backend Database
+
+Create three tables: restaurants (restaurant_id, name, city, cuisine_type, created_at),
+menu_items (item_id, restaurant_id, item_name, price, category) with a FOREIGN KEY on
+restaurant_id, and orders (order_id, customer_name, restaurant_id, item_id, quantity,
+total_amount, order_date) with a FOREIGN KEY on restaurant_id — all with appropriate
+PRIMARY KEY and NOT NULL constraints.
+Query
+  CREATE TABLE restaurent( restaurant_id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(10) NOT NULL, city VARCHAR(50) NOT NULL, cuisine_type VARCHAR(50) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL );
+  CREATE TABLE menu_items ( item_id INT AUTO_INCREMENT PRIMARY KEY, restaurant_id INT NOT NULL, item_name VARCHAR(10) NOT NULL, price DECIMAL(10, 2) NOT NULL, category VARCHAR(50) NOT NULL, FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id) );
+  CREATE TABLE orders ( order_id INT AUTO_INCREMENT PRIMARY KEY, customer_name VARCHAR(10) NOT NULL, restaurant_id INT NOT NULL, item_id INT NOT NULL, quantity INT NOT NULL, total_amount DECIMAL(10, 2) NOT NULL, order_date DATE NOT NULL, FOREIGN KEY (restaurant_id) REFERENCES restaurants(restaurant_id) );
+
+
+Populate with at least 3 restaurants, 4 menu categories, and 15 order records distributed across restaurants.
+Query
+  INSERT INTO restaurants (name, city, cuisine_type) VALUES
+  ('Spice Junction', 'Ahmedabad', 'North Indian'),
+  ('Dragon Wok', 'Ahmedabad', 'Chinese'),
+  ('Pizza Italiano', 'Mumbai', 'Italian');
+
+  INSERT INTO menu_items (restaurant_id, item_name, price, category) VALUES
+  (1, 'Paneer Tikka', 250.00, 'Appetizer'),
+  (1, 'Butter Naan with Dal Makhani', 350.00, 'Main Course'),
+  (1, 'Mango Lassi', 120.00, 'Beverage'),
+  (1, 'Gulab Jamun', 100.00, 'Dessert'),
+  (2, 'Spring Rolls', 200.00, 'Appetizer'),
+  (2, 'Hakka Noodles', 280.00, 'Main Course'),
+  (2, 'Iced Tea', 100.00, 'Beverage'),
+  (2, 'Brownie with Ice Cream', 180.00, 'Dessert'),  
+  (3, 'Garlic Bread', 190.00, 'Appetizer'),
+  (3, 'Margherita Pizza', 450.00, 'Main Course'),
+  (3, 'Cold Coffee', 150.00, 'Beverage'),
+  (3, 'Tiramisu', 220.00, 'Dessert');
+
+  INSERT INTO orders (customer_name, restaurant_id, item_id, quantity, total_amount, order_date) VALUE
+  ('Arjun Singh', 1, 1, 2, 500.00, '2026-10-01'),
+  ('Arjun Singh', 1, 2, 1, 350.00, '2026-10-02'),
+  ('Priya Sharma', 1, 3, 2, 240.00, '2026-10-03'),
+  ('Rahul Verma', 1, 4, 3, 300.00, '2026-10-04'),
+  ('Amit Patel', 1, 2, 2, 700.00, '2026-10-05'),
+  ('Neha Gupta', 2, 5, 2, 400.00, '2026-10-01'),
+  ('Arjun Singh', 2, 6, 1, 280.00, '2026-10-02'),
+  ('Rohit Kumar', 2, 7, 3, 300.00, '2026-10-03'),
+  ('Pooja Mehta', 2, 8, 1, 180.00, '2026-10-04'),
+  ('Karan Joshi', 2, 6, 2, 560.00, '2026-10-05'),
+  ('Sneha Roy', 3, 9, 2, 380.00, '2026-10-01'),
+  ('Arjun Singh', 3, 10, 1, 450.00, '2026-10-02'),
+  ('Vikram Malhotra', 3, 11, 4, 600.00, '2026-10-03'),
+  ('Ananya Desai', 3, 12, 2, 440.00, '2026-10-04'),
+  ('Rohan Shah', 3, 10, 2, 900.00, '2026-10-05');
+
+Create a VIEW named restaurant_sales_summary showing restaurant name, total number of orders, and total revenue grouped by restaurant.
+Query 
+  USE Food;
+  CREATE VIEW restaurant_sales_summary AS
+  SELECT 
+      r.name AS restaurant_name,
+      COUNT(o.order_id) AS total_orders,
+      COALESCE(SUM(o.total_amount), 0) AS total_revenue
+  FROM 
+      restaurants r
+  LEFT JOIN 
+      orders o ON r.restaurant_id = o.restaurant_id
+  GROUP BY 
+      r.restaurant_id, r.name;
+  
+Write a stored procedure named add_order that accepts customer_name, restaurant_id, item_id, and quantity, calculates total_amount from the menu item price, validates the restaurant exists (ROLLBACK if not), and inserts the order record
+Query  
+  USE food;
+  DELIMITER //
+  CREATE PROCEDURE add_order( IN p_customer_name VARCHAR(100), IN p_restaurant_id INT, IN p_item_id INT, IN p_quantity INT ) BEGIN DECLARE v_restaurant_count INT; DECLARE v_price DECIMAL(10, 2); DECLARE v_total_amount DECIMAL(10, 2);
+  START TRANSACTION;
+  
+  SELECT COUNT(*) INTO v_restaurant_count 
+  FROM restaurants 
+  WHERE restaurant_id = p_restaurant_id;
+  
+  IF v_restaurant_count = 0 THEN
+      ROLLBACK;
+      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: Restaurant does not exist. Order rolled back.';
+  ELSE
+    
+      SELECT price INTO v_price 
+      FROM menu_items 
+      WHERE item_id = p_item_id AND restaurant_id = p_restaurant_id;
+  
+      IF v_price IS NULL THEN
+          ROLLBACK;
+          SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Error: Invalid menu item for this restaurant. Order rolled back.';
+      ELSE
+          SET v_total_amount = v_price * p_quantity;
+  
+         
+          INSERT INTO orders (customer_name, restaurant_id, item_id, quantity, total_amount, order_date) 
+          VALUES (p_customer_name, p_restaurant_id, p_item_id, p_quantity, v_total_amount, CURDATE());
+  
+     
+          COMMIT;
+          SELECT 'Order added successfully!' AS Status;
+      END IF;
+  END IF;
+  END //
+  DELIMITER ;
+
+Write a TRIGGER named after_order_insert that logs a record into an order_audit table (order_id, restaurant_id, action='INSERT', log_time=NOW()) immediately after every new order is created.
+Query
+  USE food; 
+  CREATE TABLE IF NOT EXISTS order_audit ( audit_id INT AUTO_INCREMENT PRIMARY KEY, order_id INT NOT NULL, restaurant_id INT NOT NULL, action VARCHAR(20) DEFAULT 'INSERT', log_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); DELIMITER //
+  CREATE TRIGGER after_order_insert AFTER INSERT ON orders FOR EACH ROW BEGIN INSERT INTO order_audit (order_id, restaurant_id, action, log_time) VALUES (NEW.order_id, NEW.restaurant_id, 'INSERT', NOW()); END //
+  DELIMITER ;
+  
+  
+  
+  
+  
