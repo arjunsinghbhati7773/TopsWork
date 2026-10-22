@@ -1,0 +1,20 @@
+Task 1: Design and Populate a Restaurant Database
+  Create a database named foodapp_db and a table named restaurants with columns:
+  restaurant_id (INT, AUTO_INCREMENT, PRIMARY KEY), name (VARCHAR, NOT NULL), city
+  (VARCHAR), cuisine_type (VARCHAR), and rating (DECIMAL(3,1))
+Query
+  CREATE DATABASE foodapp_db;
+  CREATE TABLE restaurants(restaurants_id int AUTO_INCREMENT PRIMARY KEY, name varchar(10) NOT Null,city varchar(10),cuisine_type varchar(10),rating decimal(3,1));
+
+  Insert at least 6 restaurant records spanning at least 3 different cities.
+Query
+  INSERT INTO restaurants(name,city,cuisine_type,rating) VALUES('Antilya','Ahemdabad','gujrati',4.5),('taj','Vadodra','khatiyawadi',4),('The Velvet Crown','surat','Punjab',5),('Bapu di hotel','Chandigarh','pujabi',3),('Dev restaurent','Mumbai','Marathi',4),('Jai Bhavni','jaipur','Rajastani',5);
+
+  Update the rating of one restaurant and delete one restaurant record using a WHERE condition.
+Query
+  UPDATE restaurants set rating=4.9 WHERE restaurants_id=3;
+  DELETE FROM restaurants WHERE restaurants_id=4;
+
+  Write a SELECT query that retrieves all restaurants sorted by rating in descending order
+Query
+  SELECT name FROM restaurants ORDER BY rating DESC;
