@@ -1,1 +1,197 @@
+Question: Justify your constraint choices for at least three columns across two tables. What data integrity problems would arise if these constraints were not applied
+Answer:
+  To maintain data consistency and reliability in a relational database, constraints are applied to enforce business rules and structural integrity. Below is an analysis of three key columns across two standard relational tables: Customers and Orders.
+  
+  Table 1: Customers
+  Column 1: email
+  Constraint Applied: UNIQUE and NOT NULL
+  
+  Justification:
+  Every registered customer must possess a valid, distinct electronic address for account identification, password recovery, and business communication.
+  
+  Data Integrity Problems if Omitted:
+  
+  Duplicate Accounts: Without a UNIQUE constraint, multiple records could be created for the same individual, fragmenting purchase history, loyalty rewards, and customer service logs.
+  
+  Communication Failures: Without a NOT NULL constraint, records lacking contact information would prevent automated transactional emails, shipping notifications, and account security alerts.
+  
+  Table 2: Orders
+  Column 2: customer_id
+  Constraint Applied: FOREIGN KEY (referencing Customers(customer_id))
+  
+  Justification:
+  This constraint enforces referential integrity by guaranteeing that every single transaction recorded in the system is definitively linked to an authorized, pre-existing customer profile.
+  
+  Data Integrity Problems if Omitted:
+  
+  Orphaned Records: Without this foreign key link, users could insert orders associated with non-existent or deleted customer IDs.
+  
+  Operational Failure: This would corrupt financial reporting, invalidate sales analytics, and make order fulfillment or customer support impossible since the system wouldn't know who placed the order or where to ship it.
+  
+  Column 3: order_date
+  Constraint Applied: NOT NULL
+  
+  Justification:
+  Every purchase must be anchored to a precise chronological timestamp to establish when the contract or transaction legally took place.
+  
+  Data Integrity Problems if Omitted:
+  
+  Reporting Distortion: Omitting the NOT NULL constraint allows transactions to be recorded without a timestamp. This skews chronological sales reporting, distorts inventory turnover metrics, and invalidates revenue forecasting.
+  
+  Compliance and Warranty Issues: Missing dates create severe legal and auditing vulnerabilities, making it impossible to determine warranty start dates, return window eligibility, or tax period compliance.
 
+Question: Explain why the WHERE clause is essential in each DML statement. What could go wrong with an UPDATE or DELETE executed without a proper WHERE condition
+Answer The WHERE clause is a foundational component of Data Manipulation Language (DML) statements. It acts as a row-level filter, determining precisely which records in a database table a command will interact with. Without it, DML statements operate on a table-wide scale, which is rarely the intended behavior for transactional systems.
+Why the WHERE Clause is Essential in DML Statements
+SELECT: Without a WHERE clause, a query retrieves every single row from a table. This causes massive performance degradation, excessive network bandwidth consumption, memory exhaustion on the application server, and potential privacy violations by exposing data that shouldn't be publicly visible.
+
+UPDATE: The clause isolates the exact record or subset of records that require modification (e.g., updating a specific user's email address or an order's status).
+
+DELETE: The clause ensures that only obsolete, expired, or explicitly targeted records are removed, preserving essential historical and operational data.
+
+INSERT: Typically, an INSERT statement adds brand-new rows and does not use a WHERE clause. However, in INSERT INTO ... SELECT operations, a WHERE clause is critical to ensure that only relevant rows from the source table are copied into the target table.
+
+What Goes Wrong Without a Proper WHERE Condition
+Executing an UPDATE or DELETE statement without a WHERE clause (or with a poorly constructed one) is one of the most severe mistakes in database management. It triggers catastrophic consequences:
+
+1. Global Table Modification or Complete Data Loss
+Unconstrained UPDATE: Modifies every single row in the table with the specified new value. For example, running UPDATE employees SET salary = 50000; resets every employee's salary to fifty thousand, destroying all individual salary grades instantly.
+
+Unconstrained DELETE: Empties the entire table by deleting all rows, while leaving the table structure (schema) intact. Running DELETE FROM orders; wipes out the entire order history in a single command.
+
+2. Severe Concurrency and Locking Issues
+Executing a blanket update or delete forces the database management system (DBMS) to acquire exclusive locks on every row, page, or the entire table.
+
+This blocks all other concurrent read and write operations, freezing the application for other users, causing connection timeouts, and grinding dependent services to a halt.
+
+3. Transaction Log Exhaustion
+DML operations write extensively to the database transaction log to ensure atomicity and allow rollbacks.
+
+A massive, unconstrained update or delete generates an enormous volume of log data, which can completely fill the transaction log disk space. This causes the database to crash or abort the transaction automatically.
+
+4. Costly Recovery and Business Downtime
+Recovering from an accidental table-wide update or delete requires restoring data from the most recent backup or utilizing point-in-time recovery (PITR) logs.
+
+This process is time-consuming, introduces significant system downtime, and invariably results in the loss of any valid transactions that occurred between the backup and the accident.
+
+Question: Which SQL clauses and aggregate functions would you use to produce this report? Explain why HAVING must be used here rather than WHERE to filter by aggregate results.
+Answer To produce an aggregate report (such as summarizing total sales, order counts, or averages per category or customer), you need a specific combination of SQL clauses and aggregate functions.
+
+SQL Clauses and Aggregate Functions
+To build a standard summary report, you utilize the following components:
+
+1. Aggregate Functions
+COUNT(): Counts the number of rows or occurrences (e.g., total number of orders placed).
+
+SUM(): Calculates the cumulative total of a numeric column (e.g., total revenue generated).
+
+AVG(): Computes the mathematical average of a numeric column (e.g., average order value).
+
+MAX() / MIN(): Identifies the highest or lowest values within a group (e.g., the largest or smallest transaction).
+
+2. Essential SQL Clauses
+SELECT: Specifies the columns to display and wraps the aggregate functions.
+
+FROM: Identifies the source tables containing the raw data.
+
+WHERE (Optional): Filters individual, raw rows before any grouping or aggregation takes place.
+
+GROUP BY: Combines rows into summary groups based on shared column values (e.g., grouping by customer_id or product_category).
+
+HAVING: Filters the grouped summary results based on the outcome of aggregate functions.
+
+ORDER BY (Optional): Sorts the final report output in ascending or descending order.
+
+Why HAVING Must Be Used Instead of WHERE
+The distinction between WHERE and HAVING comes down to the logical execution order of a SQL query within the database engine.
+
+The Logical Order of Execution in SQL:
+FROM (and JOIN)
+
+WHERE (filters individual raw rows)
+
+GROUP BY (forms groups from the filtered rows)
+
+HAVING (filters the formed groups)
+
+SELECT (evaluates expressions and aggregate functions)
+
+ORDER BY (sorts the final output)
+
+Why WHERE Fails on Aggregate Results:
+WHERE evaluates too early: The WHERE clause runs on individual rows before aggregation occurs. At the moment WHERE is processed, functions like SUM(), COUNT(), or AVG() have not been calculated yet. Attempting to write a query like SELECT customer_id, COUNT(order_id) FROM orders WHERE COUNT(order_id) > 5; 
+results in a syntax or semantic error because the aggregate total does not exist yet at that execution step.
+
+HAVING evaluates after aggregation: The HAVING clause is specifically designed to run after the GROUP BY phase has created summary groups and calculated the aggregate values. This enables it to successfully evaluate conditions applied to summary metrics,
+such as filtering for customers with a total order count greater than 5 or a total spend exceeding a specific threshold.
+
+Question: Compare INNER JOIN and LEFT JOIN for this query. Which would you use and why? Describe what each join type does to records that have no match in the other table
+Answer To compare INNER JOIN and LEFT JOIN, we look at how each handles table relationships and, specifically, records that lack a match in the related table. Using the context of our earlier Customers and Orders tables, here is a comparison
+of their behavior and guidance on when to use each.1. Behavior with Non-Matching RecordsINNER JOIN:Action: Completely excludes any rows that do not have a matching value in both tables.Result: If a customer in the Customers table has never placed an order in the Orders table,
+that customer record is dropped from the final result set entirely.LEFT JOIN:Action: Retains all rows from the left table (the table specified before the JOIN keyword), regardless of whether a match exists in the right table.Result: If a customer has no matching orders, the query still returns the customer's details,
+but fills all corresponding order columns with NULL values.2. Comparison SummaryFeatureINNER JOINLEFT JOINPrimary FocusIntersection of both tables (matches only).All records from the left table, plus any matching right table records.Handling of Unmatched RowsDiscards unmatched rows from both tables.Keeps all left table rows;
+inserts NULL for unmatched right table columns.Use CaseAnalyzing active relationships (e.g., viewing orders placed by active customers).Auditing or capturing complete primary entities (e.g., listing all registered customers, including those who have never purchased anything).3. Which One to Use and Why?The choice depends entirely on the business
+objective of the query:Use an INNER JOIN if the report only cares about active intersections—for instance, 
+generating a sales report that should only display customers who have successfully completed at least one transaction.Use a LEFT JOIN if you need a comprehensive view anchored by the primary table—for instance,
+identifying inactive customers by generating a list of all registered users and filtering for those whose order ID returns NULL.
+
+Question: Justify why a VIEW is preferred over direct table access here. What are two limitations the front-end developer should be aware of when working with this VIEW?
+Answer Using a database VIEW (such as one encapsulating the customer order summaries, joins, or aggregate metrics discussed previously) offers significant architectural advantages over granting direct table access to the application layer.
+
+Why a VIEW is Preferred Over Direct Table Access
+Security and Data Abstraction:
+A view acts as a security barrier. It allows you to expose only the specific columns and rows required by the application while hiding sensitive underlying data (such as password hashes, internal audit flags, or restricted financial metrics) and complex database schemas.
+
+Query Simplification and Maintainability:
+Instead of forcing the front-end or application code to write and manage complex multi-table joins, conditional logic, and aggregate functions repeatedly, the logic is written once within the view. Front-end developers can simply query the view as if it were a single, clean table.
+
+Consistency in Business Logic:
+Centralizing calculations (like total spend or order counts) inside a view ensures that every part of the application uses the exact same definition, eliminating discrepancies caused by divergent SQL queries written by different developers.
+
+Two Limitations for a Front-End Developer
+When working with database views, a front-end developer must be aware of key architectural constraints:
+
+1. Performance Overhead (Virtual Execution)
+The Issue: Standard views are virtual tables; they do not store data physically. Every time a view is queried, the database engine re-executes the underlying query (including all joins and aggregations) on the fly.
+
+The Impact: If the view queries large datasets without proper indexing on the underlying tables, it can lead to slow response times, high CPU utilization, and sluggish front-end UI rendering.
+
+2. Restrictions on Data Modification (INSERT, UPDATE, DELETE)
+The Issue: Not all views are updatable. Views that involve aggregate functions (SUM, COUNT), GROUP BY clauses, DISTINCT, or multi-table joins are typically read-only.
+
+The Impact: Front-end developers cannot execute direct INSERT or UPDATE statements against complex reporting views. Any data modification must target the underlying base tables directly through proper stored procedures or APIs.
+
+Question: Which database mechanism should have prevented this inconsistency? Explain how COMMIT, ROLLBACK, and SAVEPOINT work together to ensure both operations succeed or neither takes effect
+Answer To prevent data inconsistency when multiple related operations must succeed or fail as a single unit, the database relies on Transactions governed by the Atomicity property of ACID compliance.
+
+The Preventing Mechanism: Database Transactions
+A transaction is a sequence of one or more SQL operations executed as a single logical unit of work. Atomicity ensures that either all operations within the transaction complete successfully, or the entire transaction is aborted and undone, leaving the database completely unmodified.
+
+Without transactions, if an application inserts a master record (like a customer) but crashes before inserting the associated child records (like an order), the database is left in a corrupted, inconsistent state.
+
+How COMMIT, ROLLBACK, and SAVEPOINT Work Together
+Transactions are managed using three core control commands that interact to ensure data integrity:
+
+1. Transaction Initialization and Execution
+When a database modification begins, a transaction is implicitly or explicitly opened. All changes made during this window are held in a temporary workspace (transaction log) and are not visible to other users or permanently written to disk.
+
+2. SAVEPOINT (Granular Control)
+What it does: Sets an intermediate marker within an ongoing transaction.
+
+How it works: If a transaction involves multiple steps (e.g., Step A, Step B, and Step C), a developer can place a savepoint after Step A and another after Step B. If Step C fails, the system doesn't have to scrap the entire transaction. Instead, it can roll back to the savepoint just before Step C, allowing the application to retry only the failed operation while preserving the successful work.
+
+3. ROLLBACK (Error Handling and Recovery)
+What it does: Undoes changes made during the transaction.
+
+How it works: If an error, exception, or validation failure occurs anywhere during the transaction, a ROLLBACK command is triggered. It reverts all modifications made since the transaction started (or back to a specified SAVEPOINT), completely erasing any partial changes and restoring the database to its exact prior state.
+
+4. ROLLBACK vs COMMIT (Finalizing the Outcome)
+What COMMIT does: Permanently saves all changes made during the transaction to the database, making them visible to all other users and durable against system crashes.
+
+How they work together:
+
+If all operations succeed without error, a COMMIT is executed, sealing the updates permanently.
+
+If any operation fails or violates a business rule, a ROLLBACK is executed, discarding everything.
+
+By combining these commands, the database guarantees that partial or conflicting states never occur—ensuring strict consistency across related tables.
