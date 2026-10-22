@@ -1,0 +1,20 @@
+Task 2: Aggregate Revenue Reporting on Orders
+Create an orders table with columns: order_id, restaurant_id, customer_name, total_amount,
+and order_date. Insert at least 12 orders distributed across at least 4 restaurants
+Query
+  CREATE TABLE orders(order_id int AUTO_INCREMENT PRIMARY KEY,restaurants_id int(10),Customer_name varchar(10),Total_amount varchar(10),Order_date date); 
+  INSERT INTO orders(restaurants_id,Customer_name,Total_amount,Order_date) VALUES(101,'Arjun Singh',9999,261017),
+  (101,'Anurag',1999,261017),(101,'Veer',2999,261017),(102,'Rohan',399,261017),(102,'Aman',499,261017),(102,'Raj',699,261017),
+  (103,'Pavan',599,261017),(103,'Jignesh',899,261017),(103,'Pinkesh',799,261017),(104,'Keshav',799,261017),(104,'Karan',299,261017),(104,'Rahul',499,261017);
+
+Write a query to show total revenue and average order value per restaurant.
+Query  
+  SELECT restaurants_id, SUM(Total_amount) AS Total_revenue, AVG(Total_amount) AS Order_per_value FROM orders GROUP BY restaurants_id;
+
+Write a query using HAVING to list only restaurants whose total revenue exceeds Rs 5,000
+Query
+  SELECT restaurants_id, SUM(Total_amount) AS Total_revenue_exceed FROM orders GROUP BY restaurants_id HAVING SUM(Total_amount) > 5000;
+
+Write a query to retrieve the 5 most recent orders using ORDER BY and LIMIT.
+Query
+  SELECT Customer_name FROM orders ORDER BY Total_amount DESC,Order_date DESC LIMIT 5;
