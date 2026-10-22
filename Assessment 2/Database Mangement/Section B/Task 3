@@ -1,0 +1,26 @@
+Task: Multi-Table JOINs and Menu Summary View
+
+Create two tables: restaurants (restaurant_id, name, city) and menu_items (item_id,
+restaurant_id, item_name, price, category). Link them with a FOREIGN KEY on restaurant_id.
+Query
+  CREATE TABLE restaurants(restaurants_id int PRIMARY KEY,Name varchar(10),City varchar(10)); CREATE TABLE menu_item(Item_id int AUTO_INCREMENT PRIMARY KEY,restaurants_id int,Item_name varchar(10),
+  Price int,Category varchar(10), FOREIGN KEY (restaurants_id) REFERENCES restaurants(restaurants_id));
+
+Insert at least 5 restaurants and 12 menu items; at least one restaurant must have no menu items.
+Query
+  INSERT INTO restaurants(restaurants_id,name,city) VALUES(101,'Antiliya','Ahemdabad'),(102,'Taj','Mumbai'),(103,'Dev restaurants','Vadodra'),(104,'Hotel Green','Rajkot'),(105,'Jai bhavni','jaipur');
+
+Write an INNER JOIN query listing restaurant name, item name, and price for all available items
+Query
+  SELECT name AS restaurants_name,Item_name,price FROM menu_item INNER JOIN restaurants ON menu_item.restaurants_id = restaurants.restaurants_id;
+
+Write a LEFT JOIN query so that restaurants with no items also appear in results, with NULL
+values in item columns.
+Query
+  SELECT name AS restaurants_name,item_name,price FROM restaurants LEFT JOIN menu_item on restaurants.restaurants_id = menu_item.restaurants_id
+
+Create a VIEW named restaurant_menu_summary showing restaurant name, total number of
+menu items, and average item price grouped by restaurant
+Query
+  CREATE VIEW restaurants_menu_summary AS SELECT restaurants.name AS restaurants_name, COUNT(menu_item.Item_id),AVG(menu_item.price) FROM restaurants 
+  LEFT JOIN menu_item on restaurants.restaurants_id = menu_item.restaurants_id GROUP BY restaurants.restaurants_id,restaurants.name;
