@@ -1,0 +1,19 @@
+Task 1 - Declare variables in Java to represent a Flipkart product: productName (String), price (double), inStock (boolean), and rating (float). 
+         Initialize each with sample values and print them.
+Answer - 
+        public class test
+        {
+            public static void main(String[] args)
+            {
+                String productName = "Samsung s25";
+                double price = 149000;
+                boolean inStock = true;
+                float rating = 4;
+        
+                System.out.println("The Product Detail is given below");
+                System.out.println("Product Name : "+productName);
+                System.out.println("The Product price is : "+price);
+                System.out.println("The product is avalible : "+ inStock);
+                System.out.println("Thr rating of Product : "+rating);
+            }
+        }
