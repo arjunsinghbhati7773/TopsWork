@@ -1,0 +1,22 @@
+Task 2 - Write a Java program that takes a user's Zomato wallet balance (double) and applies a 10% cashback if the balance is above ₹500, otherwise no cashback.
+         Use arithmetic and relational operators to calculate and display the final balance.
+Answer - 
+        import java.util.Scanner;
+        public class hello
+        {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter your wallet balance");
+                int bal=sc.nextInt();
+                if(bal >= 500)
+                {
+                    System.out.println("Cashback is applyed You get 10% off");
+                    System.out.println("Your final Balance is : " + (bal-(bal/10)));
+                }
+                else
+                {
+                    System.out.println("Your Wallet is less than 500 so you dons't get cashback");
+                    System.out.println("Your final balance is : "+bal);
+                }
+            }
+        }
