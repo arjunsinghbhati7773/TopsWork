@@ -1,0 +1,25 @@
+Task 4 - Write a Java program that takes an integer representing the number of unread WhatsApp messages and prints 'No new messages', 'Few messages', or 'Too many messages' using the ternary operator.
+         <br><br><em><strong>Hint:</strong> Use nested ternary operators for three possible outputs.</em>
+Answer - 
+        import java.util.Scanner;
+        public class hello
+        {
+            public static void main(String[] args)
+            {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter Unreaded Whatsapp Messages");
+                int unread = sc.nextInt();
+                if(unread>=1 && unread < 10)
+                {
+                    System.out.println("Few massages");
+                }
+                else if(unread > 10)
+                {
+                    System.out.println("Too Many Massages");
+                }
+                else
+                {
+                    System.out.println("NO Massages");
+                }
+            }
+        } 
