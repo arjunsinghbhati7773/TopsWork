@@ -1,0 +1,24 @@
+Task 3 - Create a Java snippet that checks if a user can book a movie ticket on BookMyShow: declare variables for userAge (int) and hasPaymentMethod (boolean). 
+         Use logical and relational operators to print 'Booking allowed' only if the user is 18 or older and has a payment method linked.
+Answer - 
+        import java.util.Scanner;
+        public class hello
+        {
+            public static void main(String[] args)
+            {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Welcome to Book My Show Application");
+                System.out.println("Enter your Age");
+                int age=sc.nextInt();
+                System.out.println("Is Payment Method is linked");
+                boolean payment = sc.nextBoolean();
+                if(age>=18 && payment == true)
+                {
+                    System.out.println("Booking Allowed");
+                }
+                else
+                {
+                    System.out.println("Bookin Isn't Allowed");
+                }
+            }
+        }
