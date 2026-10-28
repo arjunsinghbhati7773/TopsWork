@@ -1,0 +1,14 @@
+Task 5 - Write a short note (2-3 lines) in a comment at the top of your InstaWelcome.java file explaining the difference between JDK, JRE, and JVM in your own words.
+         <br><br><em><strong>Hint:</strong> Imagine explaining it to a friend who's never coded before.</em>
+Answer  /*  JVM - It reads the compiled bytecode, converts it into platform-specific machine code, and runs it on your operating system.
+            JRE - It contains the JVM plus the core Java Class Libraries (such as rt.jar / standard module libraries for utility functions, collections, file I/O, etc.) and supporting files.
+            JDK - It contains everything in the JRE (which includes the JVM), along with development tools such as the compiler (javac), archiver (jar), documentation generator (javadoc), and debugger (jdb).
+        */
+        public class test
+        {
+            public static void main(String[] args)
+            {
+                System.out.println("My favorite app is Instagram");
+                System.out.println("My Name is Arjun");
+            }
+        }
