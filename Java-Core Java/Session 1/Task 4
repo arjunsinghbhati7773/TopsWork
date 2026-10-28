@@ -1,0 +1,10 @@
+Task 4- Modify your InstaWelcome program to print your favorite app's name and your name on separate lines using two System.out.println() statements
+Answer-
+      public class test
+      {
+          public static void main(String[] args)
+          {
+              System.out.println("My favorite app is Instagram");
+              System.out.println("My Name is Arjun");
+          }
+      }
