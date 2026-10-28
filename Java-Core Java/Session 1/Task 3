@@ -1,0 +1,10 @@
+Task 3 - In your InstaWelcome class, add comments above each section to clearly label the class declaration, the main method, and the print statement.
+        <br><br><em><strong>Hint:</strong> Use // for single-line comments to explain each part.</em>
+Answer- 
+        public class test // Main Class
+        {
+            public static void main(String[] args)  // Main Method
+            {
+                System.out.println("Welcome to Instagram");   //PrintStatement 
+            }
+        }
