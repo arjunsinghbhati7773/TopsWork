@@ -1,0 +1,22 @@
+Task 1 - Write a Java program called FoodieBalanceChecker that takes an integer input for wallet balance and prints 'Low Balance Warning.'
+         if the balance is less than 100, otherwise prints 'Sufficient Balance.' using an if-else statement.
+Answer - 
+        import java.util.Scanner;
+        public class hello
+        {
+            public static void main(String[] args)
+            {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Welcome to Foodie balance Checker");
+                System.out.println("Enter your Wallet balance");
+                int bal=sc.nextInt();
+                if(bal>=100)
+                {
+                    System.out.println("Sufficent Balance");
+                }
+                else
+                {
+                    System.out.println("Low Balance");
+                }
+            }
+        }
